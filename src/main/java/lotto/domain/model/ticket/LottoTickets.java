@@ -40,4 +40,10 @@ public class LottoTickets {
                         otherTickets.lottoTickets.stream())
                 .collect(Collectors.collectingAndThen(Collectors.toList(), LottoTickets::of));
     }
+
+    public static LottoTickets mapToTickets(List<String> ticketStrings) {
+        return ticketStrings.stream()
+                .map(LottoTicket::of)
+                .collect(Collectors.collectingAndThen(Collectors.toList(), LottoTickets::of));
+    }
 }

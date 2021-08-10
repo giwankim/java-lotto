@@ -41,10 +41,4 @@ public class LottoService {
         int amountPaid = lottoMoney.getAmount();
         return (double) totalPrizeMoney / amountPaid;
     }
-
-    public static LottoTickets mapToTickets(List<String> ticketStrings) {
-        return ticketStrings.stream()
-                .map(LottoTicket::of)
-                .collect(Collectors.collectingAndThen(Collectors.toList(), LottoTickets::of));
-    }
 }

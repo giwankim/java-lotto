@@ -8,12 +8,7 @@ public class Payment {
     private final int countOfManual;
 
     private Payment(LottoMoney lottoMoney, int countOfManual) {
-        if (lottoMoney.numberOfTickets() < countOfManual) {
-            throw new InvalidManualTicketCountException();
-        }
-        if (countOfManual < 0) {
-            throw new RuntimeException("수동 구매 로또 수는 음수일 수 없습니다.");
-        }
+        validate(lottoMoney, countOfManual);
         this.lottoMoney = lottoMoney;
         this.countOfManual = countOfManual;
     }
@@ -24,5 +19,14 @@ public class Payment {
 
     public int countOfAutomatic() {
         return lottoMoney.numberOfTickets() - countOfManual;
+    }
+
+    private void validate(LottoMoney lottoMoney, int countOfManual) {
+        if (lottoMoney.numberOfTickets() < countOfManual) {
+            throw new InvalidManualTicketCountException();
+        }
+        if (countOfManual < 0) {
+            throw new RuntimeException("수동 구매 로또 수는 음수일 수 없습니다.");
+        }
     }
 }

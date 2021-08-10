@@ -49,7 +49,7 @@ public class LottoController {
     private static LottoTickets askForTickets(int countOfManual, Payment payment) {
         // manual tickets
         List<String> ticketStrings = InputView.manualTicketStrings(countOfManual);
-        LottoTickets manualTickets = LottoService.mapToTickets(ticketStrings);
+        LottoTickets manualTickets = LottoTickets.mapToTickets(ticketStrings);
 
         // automatic tickets
         LottoTickets randomTickets = LottoService.generateRandomTickets(payment.countOfAutomatic());
